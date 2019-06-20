@@ -76,25 +76,35 @@ open class Generator: NSObject {
         }
     }
     
-    private func generateObjectsCombinations() -> [NSObject] {
-        var generated = [NSObject]()
+    private func setKeyValue(key: String, value: Any, inObject: Any) -> Any {
+        var currentObject = inObject
+        do {
+            let property = try info!.property(named: key)
+            try property.set(value: value, on: &currentObject)
+        } catch {}
         
-        for singleCombination in objectCombinations {
-            do {
-                var option = try createInstance(of: baseClass)
-                
-                for (key, value) in singleCombination {
-                    let property = try info!.property(named: key)
-                    try property.set(value: value, on: &option)
-                    
-                }
-                
-                generated.append(option as! NSObject)
-            } catch {}
+        return currentObject
+    }
+    
+    private func generateSingleObject(values: Dictionary<String, Any>) -> NSObject {
+        var result: NSObject
+        do {
+            var option = try createInstance(of: baseClass)
+            
+            values.forEach { (key, value) in
+                option = setKeyValue(key: key, value: value, inObject: option)
+            }
+            result = option as! NSObject
+        } catch {
+            result = baseClass.init()
         }
         
         objectCombinations = [Dictionary<String, Any>]()
         
-        return generated
+        return result
+    }
+    
+    private func generateObjectsCombinations() -> [NSObject] {
+        return objectCombinations.compactMap{ singleCombination in generateSingleObject(values: singleCombination)}
     }
 }

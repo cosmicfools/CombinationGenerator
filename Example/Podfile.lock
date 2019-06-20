@@ -1,0 +1,27 @@
+PODS:
+  - CombinationGenerator (0.1.0):
+    - Runtime (~> 2.1)
+  - CRuntime (2.1.2)
+  - Runtime (2.1.0):
+    - CRuntime
+
+DEPENDENCIES:
+  - CombinationGenerator (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CRuntime
+    - Runtime
+
+EXTERNAL SOURCES:
+  CombinationGenerator:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CombinationGenerator: 3bb1026eab24643db74bd4a8f688f11586d08b7c
+  CRuntime: d7ae373e07ab36e92ad273259557e3817e0c214b
+  Runtime: 3e42815d18fa3075631768e79f02be2ad7e2b18f
+
+PODFILE CHECKSUM: d165b43cf98fdca8a89b149923f51cb1ce7383e5
+
+COCOAPODS: 1.7.2

@@ -1,0 +1,27 @@
+{
+  "name": "CombinationGenerator",
+  "version": "0.1.0",
+  "summary": "A short description of CombinationGenerator.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Francisco Javier Trujillo Mata/CombinationGenerator",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Francisco Javier Trujillo Mata": "fjtrujy@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Francisco Javier Trujillo Mata/CombinationGenerator.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "CombinationGenerator/Classes/**/*",
+  "dependencies": {
+    "Runtime": [
+      "~> 2.1"
+    ]
+  }
+}

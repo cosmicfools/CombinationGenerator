@@ -1,0 +1,6 @@
+framework module Pods_CombinationGenerator_Example {
+  umbrella header "Pods-CombinationGenerator_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

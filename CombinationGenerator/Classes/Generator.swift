@@ -32,8 +32,11 @@ open class Generator: NSObject {
     
     open func generateCombinations() -> [NSObject] {
         
-        let nextProp = nextProperty(property: nil)!
-        populateCombinations(currentCombinations: Dictionary<String, Any>(), property: nextProp)
+        let nextProp = nextProperty(property: nil)  ?? nil
+        if nextProp != nil {
+            populateCombinations(currentCombinations: Dictionary<String, Any>(), property: nextProp!)
+        }
+        
         return generateObjectsCombinations()
     }
     

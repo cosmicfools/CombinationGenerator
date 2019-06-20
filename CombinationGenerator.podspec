@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CombinationGenerator'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'CombinationGenerator allows you to generate as many combinations for as you want for a concrete DataModel'
   s.description      = "CombinationGenerator is so useful to explore and test all the possibilities that a concrete DataModule could have. It could be applied for Testing or UITesting purpose, for populate all the possible values or simply to use brute force."
 

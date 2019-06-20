@@ -1,5 +1,5 @@
 PODS:
-  - CombinationGenerator (0.1.0):
+  - CombinationGenerator (0.1.1):
     - Runtime (~> 2.1)
   - CRuntime (2.1.2)
   - Runtime (2.1.0):
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CombinationGenerator: a6982179634f4681069f1fac347e6e0d567e3373
+  CombinationGenerator: 94cd57a20c534e38568a59eea269e56fadecca0f
   CRuntime: d7ae373e07ab36e92ad273259557e3817e0c214b
   Runtime: 3e42815d18fa3075631768e79f02be2ad7e2b18f
 

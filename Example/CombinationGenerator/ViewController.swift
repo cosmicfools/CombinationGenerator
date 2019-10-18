@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         generator.addCombination(propertyKey: "gender", values: [Gender.female, Gender.male])
         
         
-        let possibilities = generator.generateCombinations() as! [UserInfo]
+        let possibilities = generator.generateCombinations()
         
         
         possibilities.forEach { userInfo in

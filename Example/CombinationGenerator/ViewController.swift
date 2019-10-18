@@ -19,11 +19,9 @@ class ViewController: UIViewController {
         generator.addCombination(propertyKey: "name", values: ["Francisco", "Tete", "MadMoc", "Pableras"])
         generator.addCombination(propertyKey: "surname", values: ["Molon", "Nadal", "Singular", "Reyes"])
         generator.addCombination(propertyKey: "age", values: [18, 33, 40, 30, 12, 20])
-        generator.addCombination(propertyKey: "gender", values: [Gender.female, Gender.male])
-        
+        generator.addCombination(propertyKey: "gender", values: [UserInfo.Gender.female, UserInfo.Gender.male])
         
         let possibilities = generator.generateCombinations()
-        
         
         possibilities.forEach { userInfo in
             print(userInfo.name!, userInfo.surname!, userInfo.age!.description, userInfo.gender.debugDescription)

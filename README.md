@@ -8,7 +8,7 @@
 
 ## Overview
 
-CombinationGenerator basically is a helper that use brute-force to generate all possibilities for a concrete DataModel given a list of possible values per property
+CombinationGenerator basically is a helper that use brute-force to generate all possibilities for a concrete DataModel given a list of possible values per property. CombinationGenerator use Generics, so it makes your life even easier.
 
 ## Example
 
@@ -52,7 +52,7 @@ import CombinationGenerator
 #### 2. Create your Data model
 
 ```swift
-class UserInfo: NSObject {
+class UserInfo {
     var name: String?
     var surname: String?
     var age: Int?
@@ -62,13 +62,13 @@ class UserInfo: NSObject {
 #### 3. Instanciate, add combination and generate all the possibilities
 
 ```swift
-let generator = Generator(baseClass: UserInfo.self)
+let generator = Generator<UserInfo>()
 generator.addCombination(propertyKey: "name", values: ["Tete", "MadMoc", "Pableras", "Trujy"])
 generator.addCombination(propertyKey: "surname", values: ["Molon", "Singular", "Friendly"])
 generator.addCombination(propertyKey: "age", values: [18, 33, 40])
 
 
-let possibilities = generator.generateCombinations() as! [UserInfo]
+let possibilities = generator.generateCombinations()
 ```
 
 #### 4. Results:

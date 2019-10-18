@@ -1,6 +1,6 @@
 {
   "name": "CombinationGenerator",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "summary": "CombinationGenerator allows you to generate as many combinations for as you want for a concrete DataModel",
   "description": "CombinationGenerator is so useful to explore and test all the possibilities that a concrete DataModule could have. It could be applied for Testing or UITesting purpose, for populate all the possible values or simply to use brute force.",
   "homepage": "https://github.com/fjtrujy/CombinationGenerator",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/fjtrujy/CombinationGenerator.git",
-    "tag": "0.1.2"
+    "tag": "0.2.0"
   },
   "social_media_url": "https://twitter.com/fjtrujy",
   "platforms": {

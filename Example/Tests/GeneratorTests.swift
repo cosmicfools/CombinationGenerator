@@ -1,12 +1,12 @@
 import XCTest
 import CombinationGenerator
 
-private  enum Gender {
-    case male
-    case female
-}
-
-private class UserInfo: NSObject {
+private class UserInfo {
+    enum Gender {
+        case male
+        case female
+    }
+    
     var name: String?
     var surname: String?
     var age: Int?
@@ -123,7 +123,7 @@ class Tests: XCTestCase {
             self.generator.addCombination(propertyKey: "name", values: stringValues)
             self.generator.addCombination(propertyKey: "surname", values: stringValues)
             self.generator.addCombination(propertyKey: "age", values: integerValues)
-            self.generator.addCombination(propertyKey: "gender", values: [Gender.female, Gender.male])
+            self.generator.addCombination(propertyKey: "gender", values: [UserInfo.Gender.female, UserInfo.Gender.male])
             _ = self.generator.generateCombinations()
         }
     }

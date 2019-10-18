@@ -8,12 +8,12 @@
 
 import UIKit
 
-enum Gender {
-    case male
-    case female
-}
-
-class UserInfo: NSObject {
+class UserInfo {
+    enum Gender {
+        case male
+        case female
+    }
+    
     var name: String?
     var surname: String?
     var age: Int?

@@ -1,12 +1,12 @@
 import XCTest
 import CombinationGenerator
 
-fileprivate  enum Gender {
+private  enum Gender {
     case male
     case female
 }
 
-fileprivate class UserInfo: NSObject {
+private class UserInfo: NSObject {
     var name: String?
     var surname: String?
     var age: Int?
@@ -20,18 +20,8 @@ fileprivate class UserInfo: NSObject {
     }
 }
 
-extension Array {
-    
-}
-
 class Tests: XCTestCase {
-    var generator: Generator?
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        self.generator = Generator(baseClass: UserInfo.self)
-    }
+    private let generator = Generator<UserInfo>()
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
@@ -52,23 +42,23 @@ class Tests: XCTestCase {
     }
     
     func testEmptyCombinations() {
-        let combinations = self.generator?.generateCombinations() as! [UserInfo]
+        let combinations = self.generator.generateCombinations()
         
         XCTAssert(combinations.count == 0, "The number of element must be 0")
     }
     
     func testSingleValueEmptyContent() {
-        self.generator?.addCombination(propertyKey: "name", values: [])
+        self.generator.addCombination(propertyKey: "name", values: [])
         
-        let combinations = self.generator?.generateCombinations() as! [UserInfo]
+        let combinations = self.generator.generateCombinations()
         
         XCTAssert(combinations.count == 0, "The number of element must be 0")
     }
     
     func testSingleValue() {
-        self.generator?.addCombination(propertyKey: "name", values: ["Fistrum"])
+        self.generator.addCombination(propertyKey: "name", values: ["Fistrum"])
         
-        let combinations = self.generator?.generateCombinations() as! [UserInfo]
+        let combinations = self.generator.generateCombinations()
         
         XCTAssert(combinations.count == 1, "The number of element must be 1")
         let first = combinations.first
@@ -80,10 +70,10 @@ class Tests: XCTestCase {
         mockedFirst.name = "Fistrum"
         mockedFirst.surname = "Rodrigor"
         
-        self.generator?.addCombination(propertyKey: "name", values: [mockedFirst.name!])
-        self.generator?.addCombination(propertyKey: "surname", values: [mockedFirst.surname!])
+        self.generator.addCombination(propertyKey: "name", values: [mockedFirst.name!])
+        self.generator.addCombination(propertyKey: "surname", values: [mockedFirst.surname!])
         
-        let combinations = self.generator?.generateCombinations() as! [UserInfo]
+        let combinations = self.generator.generateCombinations()
         
         XCTAssert(combinations.count == 1, "The number of element must be 1")
         let first = combinations.first
@@ -108,10 +98,10 @@ class Tests: XCTestCase {
         mockedForth.name = "Gramenawer"
         mockedForth.surname = "Condemor"
         
-        self.generator?.addCombination(propertyKey: "name", values: [mockedFirst.name!, mockedThird.name!])
-        self.generator?.addCombination(propertyKey: "surname", values: [mockedFirst.surname!, mockedSecond.surname!])
+        self.generator.addCombination(propertyKey: "name", values: [mockedFirst.name!, mockedThird.name!])
+        self.generator.addCombination(propertyKey: "surname", values: [mockedFirst.surname!, mockedSecond.surname!])
         
-        let combinations = self.generator?.generateCombinations() as! [UserInfo]
+        let combinations = self.generator.generateCombinations()
         
         XCTAssert(combinations.count == 4, "The number of element must be 4")
         
@@ -130,11 +120,11 @@ class Tests: XCTestCase {
             integerValues.append(index)
         }
         self.measure() {
-            self.generator?.addCombination(propertyKey: "name", values: stringValues)
-            self.generator?.addCombination(propertyKey: "surname", values: stringValues)
-            self.generator?.addCombination(propertyKey: "age", values: integerValues)
-            self.generator?.addCombination(propertyKey: "gender", values: [Gender.female, Gender.male])
-            _ = self.generator?.generateCombinations()
+            self.generator.addCombination(propertyKey: "name", values: stringValues)
+            self.generator.addCombination(propertyKey: "surname", values: stringValues)
+            self.generator.addCombination(propertyKey: "age", values: integerValues)
+            self.generator.addCombination(propertyKey: "gender", values: [Gender.female, Gender.male])
+            _ = self.generator.generateCombinations()
         }
     }
     

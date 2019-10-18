@@ -8,26 +8,18 @@
 import UIKit
 import Runtime
 
-open class Generator: NSObject {
-    private var baseClass: NSObject.Type
-    private var info: TypeInfo?
-    private var combinations: Dictionary<String, [Any]>
-    private var objectCombinations: [Dictionary<String, Any>]
+open class Generator<T: Any> {
+    private var info = try? typeInfo(of: T.self)
+    private var combinations = Dictionary<String, [Any]>()
+    private var objectCombinations = [Dictionary<String, Any>]()
     
-    public init(baseClass: NSObject.Type) {
-        self.baseClass = baseClass
-        self.combinations = Dictionary<String, [Any]>()
-        self.objectCombinations = [Dictionary<String, Any>]()
-        self.info = try? typeInfo(of: baseClass)
-        
-        super.init()
-    }
+    public init() {} // Needed to be accesible outside
     
     open func addCombination(propertyKey: String, values: [Any])  {
         combinations[propertyKey] = values
     }
     
-    open func generateCombinations() -> [NSObject] {
+    open func generateCombinations() -> [T] {
         if let nextProp = nextProperty(property: nil) {
             populateCombinations(currentCombinations: Dictionary<String, Any>(), property: nextProp)
         }
@@ -73,18 +65,18 @@ private extension Generator {
         }
     }
     
-    func generateObjectsCombinations() -> [NSObject] {
-        var generated = [NSObject]()
+    func generateObjectsCombinations() -> [T] {
+        var generated = [T]()
         
         for singleCombination in objectCombinations {
-            guard var option = try? createInstance(of: baseClass) else { continue }
+            guard var option = try? createInstance(of: T.self) as? T else { continue }
             
             for (key, value) in singleCombination {
                 guard let property = try? info?.property(named: key) else { continue }
                 try? property.set(value: value, on: &option)
             }
             
-            generated.append(option as! NSObject)
+            generated.append(option)
         }
         
         objectCombinations = [Dictionary<String, Any>]()

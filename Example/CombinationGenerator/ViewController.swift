@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let generator = Generator(baseClass: UserInfo.self)
+        let generator = Generator<UserInfo>()
         generator.addCombination(propertyKey: "name", values: ["Francisco", "Tete", "MadMoc", "Pableras"])
         generator.addCombination(propertyKey: "surname", values: ["Molon", "Nadal", "Singular", "Reyes"])
         generator.addCombination(propertyKey: "age", values: [18, 33, 40, 30, 12, 20])

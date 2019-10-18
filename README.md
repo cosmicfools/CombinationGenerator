@@ -76,9 +76,7 @@ let possibilities = generator.generateCombinations()
 In the previous example if we want to see the generated object we can do:
 
 ```swift
-possibilities.forEach { userInfo in
-    print(userInfo.name!, userInfo.surname!, userInfo.age!.description)
-}
+possibilities.forEach { print($0.name!, $0.surname!, $0.age!.description, $0.gender.debugDescription) }
 ```
 
 And the received output:

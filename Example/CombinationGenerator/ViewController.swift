@@ -16,10 +16,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let generator = Generator<UserInfo>()
-        generator.addCombination(propertyKey: "name", values: ["Francisco", "Tete", "MadMoc", "Pableras"])
-        generator.addCombination(propertyKey: "surname", values: ["Molon", "Nadal", "Singular", "Reyes"])
-        generator.addCombination(propertyKey: "age", values: [18, 33, 40, 30, 12, 20])
-        generator.addCombination(propertyKey: "gender", values: [UserInfo.Gender.female, UserInfo.Gender.male])
+        
+        generator.addCombination(keyPath: \UserInfo.name, values: ["Francisco", "Tete", "MadMoc", "Pableras"])
+        generator.addCombination(keyPath: \UserInfo.surname, values: ["Molon", "Nadal", "Singular", "Reyes"])
+        generator.addCombination(keyPath: \UserInfo.age, values: [18, 33, 40, 30, 12, 20])
+        generator.addCombination(keyPath: \UserInfo.gender, values: [UserInfo.Gender.female, UserInfo.Gender.male])
         
         let possibilities = generator.generateCombinations()
         possibilities.forEach { print($0.name!, $0.surname!, $0.age!.description, $0.gender.debugDescription) }

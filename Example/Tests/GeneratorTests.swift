@@ -48,7 +48,7 @@ class Tests: XCTestCase {
     }
     
     func testSingleValueEmptyContent() {
-        self.generator.addCombination(propertyKey: "name", values: [])
+        self.generator.addCombination(keyPath: \UserInfo.name, values: [])
         
         let combinations = self.generator.generateCombinations()
         
@@ -56,7 +56,7 @@ class Tests: XCTestCase {
     }
     
     func testSingleValue() {
-        self.generator.addCombination(propertyKey: "name", values: ["Fistrum"])
+        self.generator.addCombination(keyPath: \UserInfo.name, values: ["Fistrum"])
         
         let combinations = self.generator.generateCombinations()
         
@@ -70,8 +70,8 @@ class Tests: XCTestCase {
         mockedFirst.name = "Fistrum"
         mockedFirst.surname = "Rodrigor"
         
-        self.generator.addCombination(propertyKey: "name", values: [mockedFirst.name!])
-        self.generator.addCombination(propertyKey: "surname", values: [mockedFirst.surname!])
+        self.generator.addCombination(keyPath: \UserInfo.name, values: [mockedFirst.name!])
+        self.generator.addCombination(keyPath: \UserInfo.surname, values: [mockedFirst.surname!])
         
         let combinations = self.generator.generateCombinations()
         
@@ -98,8 +98,8 @@ class Tests: XCTestCase {
         mockedForth.name = "Gramenawer"
         mockedForth.surname = "Condemor"
         
-        self.generator.addCombination(propertyKey: "name", values: [mockedFirst.name!, mockedThird.name!])
-        self.generator.addCombination(propertyKey: "surname", values: [mockedFirst.surname!, mockedSecond.surname!])
+        self.generator.addCombination(keyPath: \UserInfo.name, values: [mockedFirst.name!, mockedThird.name!])
+        self.generator.addCombination(keyPath: \UserInfo.surname, values: [mockedFirst.surname!, mockedSecond.surname!])
         
         let combinations = self.generator.generateCombinations()
         
@@ -120,10 +120,10 @@ class Tests: XCTestCase {
             integerValues.append(index)
         }
         self.measure() {
-            self.generator.addCombination(propertyKey: "name", values: stringValues)
-            self.generator.addCombination(propertyKey: "surname", values: stringValues)
-            self.generator.addCombination(propertyKey: "age", values: integerValues)
-            self.generator.addCombination(propertyKey: "gender", values: [UserInfo.Gender.female, UserInfo.Gender.male])
+            self.generator.addCombination(keyPath: \UserInfo.name, values: stringValues)
+            self.generator.addCombination(keyPath: \UserInfo.surname, values: stringValues)
+            self.generator.addCombination(keyPath: \UserInfo.age, values: integerValues)
+            self.generator.addCombination(keyPath: \UserInfo.gender, values: [UserInfo.Gender.female, UserInfo.Gender.male])
             _ = self.generator.generateCombinations()
         }
     }

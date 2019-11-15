@@ -9,27 +9,37 @@ import UIKit
 import Runtime
 
 open class Generator<T: Any> {
-    private var info = try? typeInfo(of: T.self)
-    private var combinations: [ReferenceWritableKeyPath<T, Any?>: [Any]] = [:]
+    private var combinations: [(Any, [Any])] = []
     
     public init() {} // Needed to be accesible outside
     
-    open func addCombination<TpropertyType: Any>(keyPath: ReferenceWritableKeyPath<T, TpropertyType?>, values: [Any])  {
-        combinations[keyPath] = values
+    open func addCombination<TparamType>(keyPath: WritableKeyPath<T, TparamType?>, values: [Any])  {
+        combinations.append((keyPath, values))
     }
     
     open func generateCombinations() -> [T] {
-        let objectCombinations = combinations.map { populateCombinations(keyPath: $0, values: $1) }
+        let objectCombinations = combinations.map { populateCombinations(keyPath: $0.0, values: $0.1) }
         return generateObjectsCombinations(objectCombinations)
     }
 }
 
 private extension Generator {
-    func populateCombinations<Tkey, Tvalue>(keyPath: Tkey, values:[Tvalue]) -> [Tkey: Tvalue] {
-        return values.reduce([:]) { (dict, value) -> [Tkey: Tvalue] in
-            var dict = dict
-            dict[keyPath] = value
-            return dict
+    func populateCombinations<Tkey, Tvalue>(keyPath: Tkey, values:[Tvalue]) -> [(Tkey, Tvalue)] {
+        return values.map { (keyPath, $0) }
+    }
+    
+    func populateCombinations(currentCombinations: [String: Any], property: Any?) {
+        let valuesForProperty: [Any] = combinations[property.name] ?? []
+        let nextProp = nextProperty(property: property)
+        for value in valuesForProperty {
+            var newCombinations = currentCombinations
+            newCombinations[property.name] = value
+            
+            if let nextProp = nextProp {
+                populateCombinations(currentCombinations: newCombinations, property: nextProp)
+            } else {
+                objectCombinations.append(newCombinations)
+            }
         }
     }
     

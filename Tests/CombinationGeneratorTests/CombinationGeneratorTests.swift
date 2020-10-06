@@ -27,7 +27,7 @@ final class CombinationGeneratorTests: XCTestCase {
     }
     
     func testSingleValueEmptyContent() {
-        self.generator.addCombination(propertyKey: "name", values: [])
+        generator.addCombination(propertyKey: "name", values: [])
         
         let combinations = self.generator.generateCombinations()
         
@@ -35,9 +35,9 @@ final class CombinationGeneratorTests: XCTestCase {
     }
     
     func testSingleValue() {
-        self.generator.addCombination(propertyKey: "name", values: ["Fistrum"])
+        generator.addCombination(propertyKey: "name", values: ["Fistrum"])
         
-        let combinations = self.generator.generateCombinations()
+        let combinations = generator.generateCombinations()
         
         XCTAssert(combinations.count == 1, "The number of element must be 1")
         let first = combinations.first
@@ -49,10 +49,10 @@ final class CombinationGeneratorTests: XCTestCase {
         mockedFirst.name = "Fistrum"
         mockedFirst.surname = "Rodrigor"
         
-        self.generator.addCombination(propertyKey: "name", values: [mockedFirst.name!])
-        self.generator.addCombination(propertyKey: "surname", values: [mockedFirst.surname!])
+        generator.addCombination(propertyKey: "name", values: [mockedFirst.name!])
+        generator.addCombination(propertyKey: "surname", values: [mockedFirst.surname!])
         
-        let combinations = self.generator.generateCombinations()
+        let combinations = generator.generateCombinations()
         
         XCTAssert(combinations.count == 1, "The number of element must be 1")
         let first = combinations.first
@@ -77,10 +77,10 @@ final class CombinationGeneratorTests: XCTestCase {
         mockedForth.name = "Gramenawer"
         mockedForth.surname = "Condemor"
         
-        self.generator.addCombination(propertyKey: "name", values: [mockedFirst.name!, mockedThird.name!])
-        self.generator.addCombination(propertyKey: "surname", values: [mockedFirst.surname!, mockedSecond.surname!])
+        generator.addCombination(propertyKey: "name", values: [mockedFirst.name!, mockedThird.name!])
+        generator.addCombination(propertyKey: "surname", values: [mockedFirst.surname!, mockedSecond.surname!])
         
-        let combinations = self.generator.generateCombinations()
+        let combinations = generator.generateCombinations()
         
         XCTAssert(combinations.count == 4, "The number of element must be 4")
         
@@ -97,11 +97,11 @@ final class CombinationGeneratorTests: XCTestCase {
             $0.1.append(contentsOf: $1)
         }
         self.measure() {
-            self.generator.addCombination(propertyKey: "name", values: values.0)
-            self.generator.addCombination(propertyKey: "surname", values: values.0)
-            self.generator.addCombination(propertyKey: "age", values: values.1)
-            self.generator.addCombination(propertyKey: "gender", values: UserInfo.Gender.allCases)
-            _ = self.generator.generateCombinations()
+            generator.addCombination(propertyKey: "name", values: values.0)
+            generator.addCombination(propertyKey: "surname", values: values.0)
+            generator.addCombination(propertyKey: "age", values: values.1)
+            generator.addCombination(propertyKey: "gender", values: UserInfo.Gender.allCases)
+            _ = generator.generateCombinations()
         }
     }
     
@@ -121,14 +121,4 @@ final class CombinationGeneratorTests: XCTestCase {
         let expectedCombinations = options.reduce(into: 1) { $0 *= $1.count }
         XCTAssert(possibilities.count == expectedCombinations, "All possible combinations weren't generated")
     }
-
-    static var allTests = [
-        ("testEmptyCombinations", testEmptyCombinations),
-        ("testSingleValueEmptyContent", testSingleValueEmptyContent),
-        ("testSingleValue", testSingleValue),
-        ("testSingleValue2Combination", testSingleValue2Combination),
-        ("test2Value2Combination", test2Value2Combination),
-        ("testPerformanceGenerateThousandExamples", testPerformanceGenerateThousandExamples),
-        ("testGenerateCombinations", testGenerateCombinations),
-    ]
 }

@@ -3,5 +3,6 @@ import XCTest
 import CombinationGeneratorTests
 
 var tests = [XCTestCaseEntry]()
-tests += CombinationGeneratorTests.allTests()
+tests += CombinationGeneratorTests.__allTests()
+
 XCTMain(tests)

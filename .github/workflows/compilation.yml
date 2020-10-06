@@ -15,13 +15,18 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Run test LinuxAlternative (in Release, with optimization level)
-      if: matrix.os == 'ubuntu-latest'
-      run: |
-        swift test -Xswiftc -O -Xswiftc -DLinuxAlternative
+    # Update linux test with "swift test --generate-linuxmain"
+    # - name: Run test LinuxAlternative (in Release, with optimization level)
+    #   if: matrix.os == 'ubuntu-latest'
+    #   run: |
+    #     swift test -Xswiftc -O -Xswiftc -DLinuxAlternative
     
+    # - name: Run test (in Release, with optimization level)
+    #   if: matrix.os != 'ubuntu-latest'
+    #   run: |
+    #     swift test -Xswiftc -O
+
     - name: Run test (in Release, with optimization level)
-      if: matrix.os != 'ubuntu-latest'
       run: |
         swift test -Xswiftc -O
 

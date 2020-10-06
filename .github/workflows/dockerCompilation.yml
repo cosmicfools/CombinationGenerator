@@ -20,7 +20,7 @@ jobs:
         
     # - name: Run test (in Release, with optimization level)
     #   run: |
-    #     swift test -Xswiftc -O
+    #     swift test -Xswiftc -O --verbose
 
     - name: Compile project (in Release)
       run: |

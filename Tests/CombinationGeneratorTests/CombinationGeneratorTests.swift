@@ -64,26 +64,26 @@ final class CombinationGeneratorTests: XCTestCase {
         let mockedFirst = UserInfo()
         mockedFirst.name = "Fistrum"
         mockedFirst.surname = "Rodrigor"
-        
+
         let mockedSecond = UserInfo()
         mockedSecond.name = "Fistrum"
         mockedSecond.surname = "Condemor"
-        
+
         let mockedThird = UserInfo()
         mockedThird.name = "Gramenawer"
         mockedThird.surname = "Rodrigor"
-        
+
         let mockedForth = UserInfo()
         mockedForth.name = "Gramenawer"
         mockedForth.surname = "Condemor"
-        
+
         generator.addCombination(propertyKey: "name", values: [mockedFirst.name!, mockedThird.name!])
         generator.addCombination(propertyKey: "surname", values: [mockedFirst.surname!, mockedSecond.surname!])
-        
+
         let combinations = generator.generateCombinations()
-        
+
         XCTAssert(combinations.count == 4, "The number of element must be 4")
-        
+
         XCTAssert(combinations.contains(mockedFirst), "FirstMocked object is not on the generated")
         XCTAssert(combinations.contains(mockedSecond), "SecondMocked object is not on the generated")
         XCTAssert(combinations.contains(mockedThird), "ThirdMocked object is not on the generated")
@@ -91,7 +91,6 @@ final class CombinationGeneratorTests: XCTestCase {
     }
     
     func testPerformanceGenerateThousandExamples() {
-        // This is an example of a performance test case.
         let values = [0...10].reduce(into: ([String](), [Int]())) {
             $0.0.append("Fistrum\($1.description)")
             $0.1.append(contentsOf: $1)
@@ -115,7 +114,7 @@ final class CombinationGeneratorTests: XCTestCase {
         generator.addCombination(propertyKey: "surname", values: surnames)
         generator.addCombination(propertyKey: "age", values: ages)
         generator.addCombination(propertyKey: "gender", values: genders)
-        
+
         let possibilities = generator.generateCombinations()
         let options: [[Any]] = [names, surnames, ages, genders]
         let expectedCombinations = options.reduce(into: 1) { $0 *= $1.count }

@@ -1,7 +1,7 @@
 # CombinationGenerator
 
-[![CI](https://github.com/cosmicfools/CombinationGenerator/workflows/CI/badge.svg)](https://github.com/cosmicfools/CombinationGenerator/actions?query=workflow%3ACI)
-[![CIContainer](https://github.com/cosmicfools/CombinationGenerator/workflows/CIContainer/badge.svg)](https://github.com/cosmicfools/CombinationGenerator/actions?query=workflow%3ACIContainer)
+![CI](https://github.com/cosmicfools/CombinationGenerator/workflows/CI/badge.svg)
+![CIContainer](https://github.com/cosmicfools/CombinationGenerator/workflows/CIContainer/badge.svg)query=workflow%3ACIContainer)
 [![Version](https://img.shields.io/cocoapods/v/CombinationGenerator.svg?style=flat)](http://cocoapods.org/pods/CombinationGenerator)
 [![License](https://img.shields.io/cocoapods/l/CombinationGenerator.svg?style=flat)](http://cocoapods.org/pods/CombinationGenerator)
 [![Platform](https://img.shields.io/cocoapods/p/CombinationGenerator.svg?style=flat)](http://cocoapods.org/pods/CombinationGenerator)
@@ -22,8 +22,24 @@ Requires Swift 5.0 and XCode 10.0 or higher.
 
 ## Installation
 
-CombinationGenerator is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### Swift Package Manager
+
+You can install CombinationGenerator via [Swift Package Manager](https://swift.org/package-manager/) by adding the following line to your `Package.swift`:
+
+```swift
+import PackageDescription
+
+let package = Package(
+    [...]
+    dependencies: [
+        .Package(name: "CombinationGenerator", url: "https://github.com/cosmicfools/CombinationGenerator.git", .branch("master"))
+    ]
+)
+```
+
+### Cocoapods
+
+You can install CombinationGenerator via [Cocoapods](https://cocoapods.org/) by adding the following line to your `Podfile`:
 
 ```ruby
 pod 'CombinationGenerator'

@@ -18,9 +18,9 @@ jobs:
         dnf -y update
         dnf -y install swift-lang git
         
-    - name: Run test (in Release, with optimization level)
-      run: |
-        swift test -Xswiftc -O
+    # - name: Run test (in Release, with optimization level)
+    #   run: |
+    #     swift test -Xswiftc -O
 
     - name: Compile project (in Release)
       run: |

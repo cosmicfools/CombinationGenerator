@@ -51,9 +51,10 @@ private extension Generator {
     func populateCombinations(currentCombinations: [String: Any], property: PropertyInfo) {
         let valuesForProperty: [Any] = combinations[property.name] ?? []
         let nextProp = nextProperty(property: property)
-        for value in valuesForProperty {
+        
+        valuesForProperty.forEach {
             var newCombinations = currentCombinations
-            newCombinations[property.name] = value
+            newCombinations[property.name] = $0
             
             if let nextProp = nextProp {
                 populateCombinations(currentCombinations: newCombinations, property: nextProp)
@@ -64,17 +65,15 @@ private extension Generator {
     }
     
     func generateObjectsCombinations() -> [T] {
-        var generated = [T]()
-        
-        for singleCombination in objectCombinations {
-            guard var option = try? createInstance(of: T.self) as? T else { continue }
+        let generated = objectCombinations.reduce(into: [T]()) {
+            guard var option = try? createInstance(of: T.self) as? T else { return }
             
-            for (key, value) in singleCombination {
+            $1.forEach { (key, value) in
                 let property = try? info?.property(named: key)
                 try? property?.set(value: value, on: &option)
             }
             
-            generated.append(option)
+            $0.append(option)
         }
         
         objectCombinations = [] // Clean  array to save memoery space

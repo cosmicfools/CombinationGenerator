@@ -1,0 +1,27 @@
+name: CIContainer
+
+on:
+  push:
+  pull_request:
+  repository_dispatch:
+    types: [run_build]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: fedora:latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Install dependencies
+      run: |
+        dnf -y update
+        dnf -y install swift-lang git
+        
+    - name: Run test (in Release, with optimization level)
+      run: |
+        swift test -Xswiftc -O
+
+    - name: Compile project (in Release)
+      run: |
+        swift build -c release

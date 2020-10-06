@@ -1,6 +1,7 @@
 # CombinationGenerator
 
-[![Build Status](https://travis-ci.org/fjtrujy/CombinationGenerator.svg?branch=master)](https://travis-ci.org/fjtrujy/CombinationGenerator)
+[![CI](https://github.com/cosmicfools/CombinationGenerator/workflows/CI/badge.svg)](https://github.com/cosmicfools/CombinationGenerator/actions?query=workflow%3ACI)
+[![CIContainer](https://github.com/cosmicfools/CombinationGenerator/workflows/CIContainer/badge.svg)](https://github.com/cosmicfools/CombinationGenerator/actions?query=workflow%3ACIContainer)
 [![Version](https://img.shields.io/cocoapods/v/CombinationGenerator.svg?style=flat)](http://cocoapods.org/pods/CombinationGenerator)
 [![License](https://img.shields.io/cocoapods/l/CombinationGenerator.svg?style=flat)](http://cocoapods.org/pods/CombinationGenerator)
 [![Platform](https://img.shields.io/cocoapods/p/CombinationGenerator.svg?style=flat)](http://cocoapods.org/pods/CombinationGenerator)

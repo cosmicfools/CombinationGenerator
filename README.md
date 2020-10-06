@@ -1,7 +1,7 @@
 # CombinationGenerator
 
 ![CI](https://github.com/cosmicfools/CombinationGenerator/workflows/CI/badge.svg)
-![CIContainer](https://github.com/cosmicfools/CombinationGenerator/workflows/CIContainer/badge.svg)query=workflow%3ACIContainer)
+![CIContainer](https://github.com/cosmicfools/CombinationGenerator/workflows/CIContainer/badge.svg)
 [![Version](https://img.shields.io/cocoapods/v/CombinationGenerator.svg?style=flat)](http://cocoapods.org/pods/CombinationGenerator)
 [![License](https://img.shields.io/cocoapods/l/CombinationGenerator.svg?style=flat)](http://cocoapods.org/pods/CombinationGenerator)
 [![Platform](https://img.shields.io/cocoapods/p/CombinationGenerator.svg?style=flat)](http://cocoapods.org/pods/CombinationGenerator)

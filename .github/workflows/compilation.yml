@@ -19,7 +19,7 @@ jobs:
     - name: Run test (in Release, with optimization level)
       if: matrix.os != 'ubuntu-latest'
       run: |
-        swift test -Xswiftc -O --verbose
+        swift test -Xswiftc -O
 
     - name: Compile project (in Release)
       run: |

@@ -11,8 +11,8 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/fjtrujy'
 
   s.ios.deployment_target = '9.0'
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.3' }
-  s.swift_version = '5.3'
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.2' }
+  s.swift_version = '5.2'
 
   s.source_files = 'Sources/CombinationGenerator/**/*'
   s.dependency 'Runtime', '~> 2.1'

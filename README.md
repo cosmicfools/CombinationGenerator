@@ -11,14 +11,10 @@
 
 CombinationGenerator basically is a helper that use brute-force to generate all possibilities for a concrete DataModel given a list of possible values per property. CombinationGenerator use Generics, so it makes your life even easier.
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ## Requirements
 
 Is valid for iOS 9 and higher.
-Requires Swift 5.0 and XCode 10.0 or higher.
+Requires Swift 5.2 and XCode 11.0 or higher.
 
 ## Installation
 
@@ -44,17 +40,6 @@ You can install CombinationGenerator via [Cocoapods](https://cocoapods.org/) by 
 ```ruby
 pod 'CombinationGenerator'
 ```
-
-## How to use it
-
-You can just use `pod try` and inside you will see an example of a ViewController that generate all possbility for the typical UserInfo data model.
-
-```ruby
-pod  try 'CombinationGenerator'
-```
-
-If you don't have `pod try` installed go to https://github.com/CocoaPods/cocoapods-try to install it.
-
 
 In case that you still want to see here how it works, keep reading :)
 

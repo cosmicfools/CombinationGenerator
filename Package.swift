@@ -12,7 +12,7 @@ let package = Package(
             targets: ["CombinationGenerator"]),
     ],
     dependencies: [
-        .package(name: "Runtime", url: "https://github.com/wickwirew/Runtime.git", from: "2.2.2")
+        .package(name: "Runtime", url: "https://github.com/wickwirew/Runtime.git", from: "2.2.4")
     ],
     targets: [
         .target(

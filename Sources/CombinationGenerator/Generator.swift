@@ -27,6 +27,7 @@ open class Generator<T: Any> {
     }
 }
 
+// MARK: - Private Methods
 private extension Generator {
     func nextProperty(property: PropertyInfo?) -> PropertyInfo? {
         let keys = combinations.keys.sorted()

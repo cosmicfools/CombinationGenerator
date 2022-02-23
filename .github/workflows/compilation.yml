@@ -15,9 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # Update linux test with "swift test --generate-linuxmain"
     - name: Run test (in Release, with optimization level)
-      if: matrix.os != 'ubuntu-latest'
       run: |
         swift test -Xswiftc -O
 
